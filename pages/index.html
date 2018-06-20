@@ -626,8 +626,13 @@
 // -----------------------
 var tokens = getTokens();
 // console.log(tokens["kev"]);  // should log "a"
-    $("#knb").text(tokens["knb"]);
-    $("#kab").text(tokens["kab"]);
+    var knb,kab;
+    knb = tokens["knb"];
+    kab = tokens["kab"];
+    if (knb == "null"){ knb = "0";}
+    if (kab == "null"){ kab = "0";}
+    $("#knb").text(knb);
+    $("#kab").text(kab);
     //document.getElementById("ktitle").innerHTML = "my text"
     $("#ktitle").text("Key Indicators for: " + tokens["fname"] + " " + tokens["name"] );
 </SCRIPT>    
