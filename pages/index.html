@@ -33,6 +33,9 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    
+    
+    
 </head>
 
 <body>
@@ -45,7 +48,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Key Indicators</h1>
+                    <h1 id = "ktitle" class="page-header"></h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -59,8 +62,8 @@
                                     <i class="fa fa-comments fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
-                                    <div>New Comments!</div>
+                                    <div id="knb" class="huge">0</div>
+                                    <div>Events</div>
                                 </div>
                             </div>
                         </div>
@@ -103,8 +106,8 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>New Orders!</div>
+                                    <div id = "kab" class="huge">0</div>
+                                    <div>Average Basket</div>
                                 </div>
                             </div>
                         </div>
@@ -604,6 +607,30 @@
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
 
+<SCRIPT>
+
+    function getTokens(){
+    var tokens = [];
+    var query = location.search;
+    query = query.slice(1);
+    query = query.split('&');
+    $.each(query, function(i,value){    
+        var token = value.split('=');   
+        var key = decodeURIComponent(token[0]);     
+        var data = decodeURIComponent(token[1]);
+        tokens[key] = data;
+    });
+    return tokens;
+}
+
+// -----------------------
+var tokens = getTokens();
+// console.log(tokens["kev"]);  // should log "a"
+    $("#knb").text(tokens["knb"]);
+    $("#kab").text(tokens["kab"]);
+    $("#title").text("Key Indicators for " + tokens["fname"] + " " + tokens["name"] );
+</SCRIPT>    
+    
 </body>
 
 </html>
